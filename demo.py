@@ -8,7 +8,7 @@ config = {
     "staging_schema_name": "'PROFILE_STORE_STAGING'",
     "note_extract_table": "'easi__extraction__single_note'",
     "note_derivation_id": "35",
-    "note_clean_table": "'note_clea'n",
+    "note_clean_table": "'note_clean'",
     "occurrence_date_origin": "'recorded date'",
     "variable_type": "'EASI - Eczema Area and Severity Index'",
 }
