@@ -1,8 +1,12 @@
 import os
-from abc import abstractmethod
+
+from jinja2 import Environment
 
 
 class Templater:
+
+    def __init__(self, env: Environment):
+        self.environment = env
 
     def write_model(self, template, config):
         """
@@ -16,7 +20,7 @@ class Templater:
         variable_name = config.get("variable_name").lower()
         substr = "/_"
         idx = template.filename.index(substr)
-        filename = "out/" + template.filename[:idx+1] + variable_name + template.filename[idx+1:]
+        filename = "../../out/" + template.filename[:idx + 1] + variable_name + template.filename[idx + 1:]
 
         content = template.render(
             config=config
@@ -28,11 +32,9 @@ class Templater:
 
         return filename
 
-    @abstractmethod
     def write_models(self, config):
-        """
-        Writes all the models needed based on given config
-        :param config: config file
-        :return: TODO
-        """
-        pass
+        templates = self.environment.list_templates()
+
+        for t in templates:
+            template = self.environment.get_template(t)
+            self.write_model(template, config)

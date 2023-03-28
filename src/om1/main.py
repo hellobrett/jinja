@@ -1,10 +1,8 @@
-import os
-
 from jinja2 import Environment, FileSystemLoader
 
-from noteextractiontemplater import NoteExtractionTemplater
-
 # Demo Config
+from src.om1.templater import Templater
+
 config = {
     "variable_name": "EASI",
     "source": "note_extraction",
@@ -17,5 +15,6 @@ config = {
     "variable_type": "'EASI - Eczema Area and Severity Index'",
 }
 
-templater = NoteExtractionTemplater()
+env = Environment(loader=FileSystemLoader("templates/note_extraction/"))
+templater = Templater(env)
 templater.write_models(config)
