@@ -3,7 +3,7 @@ from jinja2 import Environment, FileSystemLoader
 
 
 class NoteExtractionTemplater(Templater):
-    environment = Environment(loader=FileSystemLoader("templates/note_extraction/"))
+    environment = Environment(loader=FileSystemLoader("om1/templates/note_extraction/"))
 
     def write_models(self, config):
         templates = self.environment.list_templates()
