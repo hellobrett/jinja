@@ -4,7 +4,7 @@ import yaml
 
 
 # Read in config from yml file
-with open("example.yml", "r") as stream:
+with open("easi.yml", "r") as stream:
     try:
         config = yaml.safe_load(stream)["variable"]
     except yaml.YAMLError as exc:
