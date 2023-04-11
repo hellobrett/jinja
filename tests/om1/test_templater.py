@@ -3,7 +3,7 @@ from unittest.mock import MagicMock, call
 from jinja2 import Environment
 
 from src.om1.templater import write_model, write_models
-
+import yaml
 
 def test_write_models() -> None:
     # setup
@@ -26,3 +26,10 @@ def test_write_models() -> None:
     calls = [call(1, mock_config), call(2, mock_config), call(3, mock_config)]
     mock_writer.assert_has_calls(calls)
 
+def test_yml_parser() -> None:
+    with open("example.yml", "r") as stream:
+        try:
+            loaded_yml = yaml.safe_load(stream)
+            print(loaded_yml)
+        except yaml.YAMLError as exc:
+            print(exc)
